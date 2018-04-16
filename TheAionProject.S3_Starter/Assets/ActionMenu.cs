@@ -21,7 +21,6 @@ namespace TheAionProject
 
         public static CurrentMenu currentMenu = CurrentMenu.MainMenu;
 
-
         public static Menu MissionIntro = new Menu()
         {
             MenuName = "MissionIntro",
@@ -38,7 +37,7 @@ namespace TheAionProject
             MenuTitle = "Initialize Mission",
             MenuChoices = new Dictionary<char, TravelerAction>()
                 {
-                    { '0', TravelerAction.Exit }
+                    { '1', TravelerAction.Exit }
                 }
         };
 
@@ -56,7 +55,7 @@ namespace TheAionProject
                     { '6', TravelerAction.Inventory },
                     { '7', TravelerAction.Travel },
                     { '8', TravelerAction.TravelerLocationsVisited },
-                    { '8', TravelerAction.AdminMenu },
+                    { '9', TravelerAction.AdminMenu },
                     { '0', TravelerAction.Exit }
                 }
         };
@@ -73,16 +72,5 @@ namespace TheAionProject
                 }
         };
 
-        //public static Menu ManageTraveler = new Menu()
-        //{
-        //    MenuName = "ManageTraveler",
-        //    MenuTitle = "Manage Traveler",
-        //    MenuChoices = new Dictionary<char, TravelerAction>()
-        //            {
-        //                TravelerAction.MissionSetup,
-        //                TravelerAction.TravelerInfo,
-        //                TravelerAction.Exit
-        //            }
-        //};
     }
 }

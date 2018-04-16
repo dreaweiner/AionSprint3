@@ -58,6 +58,34 @@ namespace TheAionProject
             _gameObjects = UniverseObjects.gameObjects;
         }
 
+        public bool IsValidTravelerObjectByLocationId(int traverObjectId, int currentSpaceTimeLocation)
+        {
+            List<int> travelerObjectIds = new List<int>();
+
+            //
+            // create a list of traveler object ids in current space-time location
+            //
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.SpaceTimeLocationId == currentSpaceTimeLocation && gameObject is TravelerObject)
+                {
+                    travelerObjectIds.Add(gameObject.Id);
+                }
+            }
+
+            //
+            // determine if the game object id is a valid id and return the result
+            //
+            if (travelerObjectIds.Contains(traverObjectId))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         #endregion
 
         #region ***** define methods to return game element objects and information *****
@@ -240,6 +268,24 @@ namespace TheAionProject
             }
 
             return spaceTimeLocation;
+        }
+
+        public List<TravelerObject> GetTravelerObjectsBySpaceTimeLocationId(int spaceTimeLocationId)
+        {
+            List<TravelerObject> travelerObjects = new List<TravelerObject>();
+
+            //
+            // run through the game object list and grab all that are in the current space-time location
+            //
+            foreach (GameObject gameObject in _gameObjects)
+            {
+                if (gameObject.SpaceTimeLocationId == spaceTimeLocationId && gameObject is TravelerObject)
+                {
+                    travelerObjects.Add(gameObject as TravelerObject);
+                }
+            }
+
+            return travelerObjects;
         }
 
         #endregion
