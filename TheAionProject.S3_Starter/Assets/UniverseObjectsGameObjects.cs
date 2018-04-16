@@ -68,6 +68,34 @@ namespace TheAionProject
 
             new TravelerObject
             {
+                Id = 5,
+                Name = "Bzore Stone",
+                SpaceTimeLocationId = 2,
+                Description =
+                    "A black stone that is shiny.",
+                Type = TravelerObjectType.Medicine,
+                Value = 45,
+                CanInventory = true,
+                IsVisible = true,
+                IsConsumable = true
+            },
+
+            new TravelerObject
+            {
+                Id = 6,
+                Name = "Murphy's Poison",
+                SpaceTimeLocationId = 2,
+                Description =
+                    "A black stone that is shiny.",
+                Type = TravelerObjectType.Medicine,
+                Value = -45,
+                CanInventory = true,
+                IsVisible = true,
+                IsConsumable = true
+            },
+
+            new TravelerObject
+            {
                 Id = 8,
                 Name = "Aion Tracker",
                 SpaceTimeLocationId = 0,
@@ -94,8 +122,8 @@ namespace TheAionProject
                 IsVisible = true
             },
 
-            //new SpaceTimeLocationObject
-            //{
+           // new SpaceTimeLocationObject
+           // {
             //    Id = 5,
             //    Name = "Boldendorian Chest",
             //    SpaceTimeLocationId = 2,
