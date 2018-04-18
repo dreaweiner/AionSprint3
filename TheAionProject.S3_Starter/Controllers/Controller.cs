@@ -18,6 +18,7 @@ namespace TheAionProject
         private Universe _gameUniverse;
         private SpaceTimeLocation _currentLocation;
         private bool _playingGame;
+        private TravelerObject _gameObject;
 
         #endregion
 
@@ -236,6 +237,12 @@ namespace TheAionProject
                 // update experience points for visiting locations
                 //
                 _gameTraveler.ExperiencePoints += _currentLocation.ExperiencePoints;
+                
+            }
+
+            if (_gameTraveler.Inventory.Contains(_gameUniverse.GetGameObjectById(7)))
+            {
+                _gameUniverse.GetSpaceTimeLocationById(3).Accessible = true;
             }
         }
 
@@ -296,6 +303,20 @@ namespace TheAionProject
                 // display confirmation message
                 //
                 _gameConsoleView.DisplayComfirmTravelerObjectAddedToInventory(travelerObject);
+
+                //
+                // update experience points for adding objects
+                //
+                _gameTraveler.ExperiencePoints += _gameTraveler.ExperiencePoints;
+
+                //
+                // add life if health greater than 100
+                //
+                if (_gameTraveler.Health >= 100)
+                {
+                    _gameTraveler.Health = 100;
+                    _gameTraveler.Lives += 1;
+                }
             }
         }
 
@@ -321,6 +342,66 @@ namespace TheAionProject
             // display confirmation message
             //
             _gameConsoleView.DisplayConfirmTravelerObjectRemovedFromInventory(travelerObject);
+        }
+
+        ///<summary>
+        /// this method tests and casts all appropriate game objects to traveler objects
+        /// </summary>
+        private void HandleObjectAddedToInventory(object gameObject, EventArgs e)
+        {
+            if (gameObject.GetType() == typeof(TravelerObject))
+            {
+                TravelerObject travelerObject = gameObject as TravelerObject;
+                switch (travelerObject.Type)
+                {
+                    case TravelerObjectType.Food:
+                        break;
+                    case TravelerObjectType.Medicine:
+                        _gameTraveler.Health += travelerObject.Value;
+
+                        //
+                        // add life if health greater than 100
+                        //
+                        if (_gameTraveler.Health >= 100)
+                        {
+                            _gameTraveler.Health = 100;
+                            _gameTraveler.Lives += 1;
+                        }
+
+                        //
+                        // remove object from game
+                        //
+                        if (travelerObject.IsConsumable)
+                        {
+                            travelerObject.SpaceTimeLocationId = -1;
+                        }
+
+                        //
+                        // remove life if poisoned
+                        //
+                        if (travelerObject.IsDeadly)
+                        {
+                            _gameTraveler.Lives -= 1;
+                        }
+
+                        //
+                        // add experience points
+                        //
+                        if (_gameTraveler.ExperiencePoints >= 10)
+                        {
+                            travelerObject.ExperiencePoints += 45;
+                        }
+                        break;
+                    case TravelerObjectType.Weapon:
+                        break;
+                    case TravelerObjectType.Treasure:
+                        break;
+                    case TravelerObjectType.Information:
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         #endregion

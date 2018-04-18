@@ -88,10 +88,11 @@ namespace TheAionProject
                 Description =
                     "A black stone that is shiny.",
                 Type = TravelerObjectType.Medicine,
-                Value = -45,
+                Value = -1,
                 CanInventory = true,
                 IsVisible = true,
-                IsConsumable = true
+                IsConsumable = true,
+                IsDeadly = true
             },
 
             new TravelerObject
@@ -102,7 +103,7 @@ namespace TheAionProject
                 Description =
                     "Standard issue device worn around wrist that allows for tracking and messaging.",
                 Type = TravelerObjectType.Information,
-                Value = 0,
+                Value = 50,
                 CanInventory = true,
                 IsConsumable = false,
                 IsVisible = true
@@ -116,10 +117,23 @@ namespace TheAionProject
                 Description =
                     "Standard issue ration package contain nutrients for 72 hours.",
                 Type = TravelerObjectType.Food,
-                Value = 0,
+                Value = 90,
                 CanInventory = true,
                 IsConsumable = true,
                 IsVisible = true
+            },
+
+            new TravelerObject
+            {
+                Id =7,
+                Name = "Key",
+                SpaceTimeLocationId = 2,
+                Description =
+                    "Use this key to get into the 4th room.",
+                Type = TravelerObjectType.Key,
+                Value = 0,
+                CanInventory = true
+
             },
 
            // new SpaceTimeLocationObject

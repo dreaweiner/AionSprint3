@@ -8,6 +8,8 @@ namespace TheAionProject
 {
     public class TravelerObject : GameObject
     {
+        private int _experiencePoints;
+
         public override int Id { get; set; }
         public override string Name { get; set; }
         public override string Description { get; set; }
@@ -17,5 +19,7 @@ namespace TheAionProject
         public bool IsConsumable { get; set; }
         public bool IsVisible { get; set; }
         public int Value { get; set; }
+        public int ExperiencePoints { get; set; }
+        public bool IsDeadly { get; set; }
     }
 }
