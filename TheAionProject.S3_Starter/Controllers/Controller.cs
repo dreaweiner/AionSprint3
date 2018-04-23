@@ -244,6 +244,15 @@ namespace TheAionProject
             {
                 _gameUniverse.GetSpaceTimeLocationById(3).Accessible = true;
             }
+
+            if (_gameTraveler.Inventory.Contains(_gameUniverse.GetGameObjectById(7)) &&
+               _gameTraveler.Inventory.Contains(_gameUniverse.GetGameObjectById(8)))
+            {
+                //
+                // update experience points for visiting locations
+                //
+                _gameTraveler.ExperiencePoints += _currentLocation.ExperiencePoints;
+            }
         }
 
         private void LookAtAction()
